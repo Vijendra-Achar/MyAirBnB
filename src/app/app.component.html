@@ -1,0 +1,127 @@
+<ion-app>
+
+  <ion-menu slot="start" contentId="main-content">
+
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>
+          MyAirBnB
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+
+      <!-- <div *ngIf="isUserLoggedIn === false; then showLoginButton else showProfileButton"></div> -->
+
+      <!-- <ng-template #showLoginButton>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-menu-toggle>
+                  <ion-item button (click)="onLogIn()">
+                    <ion-icon name="log-in-outline" slot="start"></ion-icon>
+                    <ion-label>Sign In</ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ng-template> -->
+
+      <!-- <ng-template #showProfileButton></ng-template> -->
+
+      <ion-grid class="ion-no-padding ion-padding-top">
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-menu-toggle>
+                <ion-item button routerLink="/user-profile">
+
+                  <ion-avatar slot="start">
+                    <ion-img src="assets/Profile_picture.jpg"></ion-img>
+                  </ion-avatar>
+                  <ion-label>
+                    <h2>The UserName</h2>
+                    <p>Username@gmail.com</p>
+                  </ion-label>
+
+                </ion-item>
+              </ion-menu-toggle>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid class="ion-no-padding ion-padding-top">
+
+        <ion-row>
+          <ion-col>
+            <ion-list>
+
+              <ion-menu-toggle>
+                <ion-item routerLink="/home/home-tabs/discover">
+                  <ion-icon name="home-outline" slot="start" lines="none"></ion-icon>
+                  <ion-label>Home</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+
+              <ion-menu-toggle>
+                <ion-item routerLink="my-bookings">
+                  <ion-icon name="bookmark-outline" slot="start" lines="none"></ion-icon>
+                  <ion-label>My Bookings</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+
+              <ion-menu-toggle>
+                <ion-item routerLink="/home/home-tabs/news">
+                  <ion-icon name="newspaper-outline" slot="start"></ion-icon>
+                  <ion-label>News Stand</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+
+              <ion-menu-toggle>
+                <ion-item (click)="onLogOut()" button>
+                  <ion-icon name="log-out-outline" slot="start"></ion-icon>
+                  <ion-label>Log Out</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+      <ion-grid class="ion-no-padding ion-padding-top">
+        <ion-row>
+          <ion-col>
+            <ion-list>
+
+              <ion-menu-toggle>
+                <ion-item button>
+                  <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+                  <ion-label>About Us</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+
+              <ion-menu-toggle>
+                <ion-item button>
+                  <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+                  <ion-label>Need Help?</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-content>
+
+  </ion-menu>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>

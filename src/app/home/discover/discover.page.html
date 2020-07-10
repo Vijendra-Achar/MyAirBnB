@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      MyAirBnB
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment value="all">
+    <ion-segment-button value="all">
+      All
+    </ion-segment-button>
+    <ion-segment-button value="beach">
+      Beach Houses
+    </ion-segment-button>
+    <ion-segment-button value="hill">
+      Hill Stations
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="4" offset-sm="4" class="ion-no-padding">
+        <ion-card *ngFor="let post of thePlaces; let i= index">
+          <ion-card-header>
+            <ion-card-title>
+              <h1>{{ post.placeName }}</h1>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <h3>{{ post.description }}</h3>
+            </ion-card-subtitle>
+            <p>
+              <ion-badge color="light">{{ post.rating }}⭐</ion-badge>
+            </p>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img [src]="post.imageUrl"></ion-img>
+            <div class="ion-padding-top">
+              <h4><span class="mainTags">Address:</span> {{ post.address }}</h4><br />
+              <h4><span class="mainTags">Rent:</span> {{ post.price | currency:'INR' }} / Night</h4>
+            </div>
+          </ion-card-content>
+          <div class="ion-padding ion-text-right">
+            <ion-button color="success" [routerLink]="['/', 'home', 'home-tabs', 'discover', post.id]">More Details
+              <ion-icon slot="end" name="arrow-forward-circle-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

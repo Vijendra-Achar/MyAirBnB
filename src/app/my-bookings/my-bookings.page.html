@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>My Bookings</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+
+        <ion-list-header>
+          <p>My Booked Places</p>
+        </ion-list-header>
+
+        <ion-list class="ion-no-padding">
+          <ion-item-sliding *ngFor="let bookingItem of fetchedBookings" #bookingSlider>
+
+            <app-mybooked-item [bookingItem]=bookingItem></app-mybooked-item>
+
+            <ion-item-options>
+              <ion-item-option color="danger" (click)="onCancelBooking(bookingItem.bookingId, bookingSlider)">
+                <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+                Cancel
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

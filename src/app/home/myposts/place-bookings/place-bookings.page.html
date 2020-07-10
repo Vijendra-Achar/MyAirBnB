@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/home-tabs/myposts"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ place?.placeName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button color="primary" [routerLink]="['/', 'home', 'home-tabs', 'myposts', 'edit-post' , place?.id]">
+    <ion-icon name="create-outline" slot="start"></ion-icon> Edit
+  </ion-button>
+</ion-content>

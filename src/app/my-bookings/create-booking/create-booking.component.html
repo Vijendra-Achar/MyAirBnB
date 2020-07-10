@@ -1,0 +1,159 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Book {{ currentPlace.placeName }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onCancel()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="ion-text-center">Booking Form</h1>
+  <h3 class="ion-text-center">Fill the Details to complete the Booking process.</h3>
+  <h6 class="ion-text-center">{{ bookingMode | titlecase }} Suite Selected.</h6>
+
+  <form [formGroup]="bookingDetails" (ngSubmit)="conirmBooking()">
+
+    <ion-grid>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Your Name</ion-label>
+            <ion-input formControlName="nameOfPerson" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item color="danger" *ngIf="personName.touched && personName.invalid">
+            <ion-text *ngIf="personName.errors.required">Name is Required.</ion-text>
+            <ion-text *ngIf="personName.errors.minlength">Name should have minimum
+              {{ personName.errors.minlength.requiredLength }} Characters.</ion-text>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Your E-mail</ion-label>
+            <ion-input formControlName="eMailOfPerson" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item color="danger" *ngIf="personEmail.touched && personEmail.invalid">
+            <ion-text *ngIf="personEmail.errors.required">E-mail ID is Required.</ion-text>
+            <ion-text *ngIf="personEmail.errors.email">Invalid E-mail Format.</ion-text>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Your Phone Number</ion-label>
+            <ion-input formControlName="phoneNumberOfPerson" type="number"></ion-input>
+          </ion-item>
+
+          <ion-item color="danger" *ngIf="personPhNumber.touched && personPhNumber.invalid">
+            <ion-text *ngIf="personPhNumber.errors.required">Phone Number is Required.</ion-text>
+            <ion-text *ngIf="personPhNumber.errors.min">Phone No. should have Minimum 10 digits.</ion-text>
+            <ion-text *ngIf="personPhNumber.errors.max">Phone No. should have Maximun 10 digits.</ion-text>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Total number of Guests</ion-label>
+            <ion-select formControlName="numberOfGuests">
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="4">4</ion-select-option>
+              <ion-select-option value="5">5</ion-select-option>
+              <ion-select-option value="6">6</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item color="danger" *ngIf="numberOfGuests.touched && numberOfGuests.invalid">
+            <ion-text *ngIf="numberOfGuests.errors.required">Please select the number of Guests.</ion-text>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+      <div formGroupName="lengthOfStay">
+        <ion-row>
+          <ion-col size="12" class="ion-padding">
+            <ion-label position="floating">How long do you wish stay?</ion-label>
+          </ion-col>
+
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating">Rent from</ion-label>
+              <ion-datetime formControlName="stayFrom" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY"
+                [min]="todayDate.toISOString()" [max]="currentPlace.availableTill.toISOString()"></ion-datetime>
+            </ion-item>
+
+            <ion-item color="danger" *ngIf="stayFrom.touched && stayFrom.invalid">
+              <ion-text *ngIf="stayFrom.errors.required">Required.</ion-text>
+            </ion-item>
+
+          </ion-col>
+
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating">Upto</ion-label>
+              <ion-datetime formControlName="stayTill" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY"
+                [min]="stayFrom.value" [max]="currentPlace.availableTill.toISOString()"></ion-datetime>
+            </ion-item>
+
+            <ion-item color="danger" *ngIf="stayTill.touched && stayTill.invalid">
+              <ion-text *ngIf="stayTill.errors.required">Required.</ion-text>
+            </ion-item>
+
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <ion-row>
+        <ion-col class="ion-text-center">
+
+          <h4> <span class="theTag"> Rent per Night </span></h4>
+          <ion-text color="success" class="ion-text-center">
+            <h5>{{ currentPlace.price | currency:'INR'}}</h5>
+          </ion-text>
+
+          <h4> <span class="theTag"> Number of days you wish to stay </span></h4>
+          <ion-text color="success" class="ion-text-center">
+            <h5>{{ totalDaysOfStay() }} <span *ngIf="totalDaysOfStay() > 1"> days </span> <span
+                *ngIf="totalDaysOfStay() <= 1"> day </span></h5>
+          </ion-text>
+
+          <h4> <span class="theTag"> Total Rent for the Duration </span></h4>
+          <ion-text color="success" class="ion-text-center">
+            <h5>{{ calcTotalPrice() | currency:'INR'}}</h5>
+          </ion-text>
+
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button [disabled]="!bookingDetails.valid" size="large" expand="block" type="submit" color="primary">
+            <ion-icon name="checkmark-done-outline" slot="start"></ion-icon>Confirm Booking
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+
+</ion-content>

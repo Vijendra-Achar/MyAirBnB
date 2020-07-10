@@ -1,0 +1,9 @@
+<ion-item [routerLink]="['/', 'home', 'home-tabs', 'myposts' , myPost.id]" detail>
+  <ion-thumbnail slot="start">
+    <ion-img [src]="myPost.imageUrl"></ion-img>
+  </ion-thumbnail>
+  <ion-label>
+    <h2>{{ myPost.placeName }}</h2>
+    <p>{{myPost.id}}</p>
+  </ion-label>
+</ion-item>

@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="'/home/home-tabs/myposts/' + currentPlace.id"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit - {{ currentPlace.placeName }} </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onUpdateOffer()">
+        <ion-icon name="checkmark-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col>
+        <div class="ion-padding">
+          <h1>Edit Post</h1>
+          <h3>Post ID - {{ currentPlace.id }}</h3>
+        </div>
+
+        <form [formGroup]="currentPostEdit">
+          <div class="ion-no-padding">
+
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">Name of the Place</ion-label>
+                  <ion-input formControlName="placeNameEdit" type="text"></ion-input>
+                </ion-item>
+                <!-- <ion-item *ngIf="placeNameEdit.touched && placeNameEdit.invalid" color="danger">
+                  <ion-text *ngIf="placeName.errors.required">Name is Required.</ion-text>
+                </ion-item> -->
+              </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">The Description</ion-label>
+                  <ion-textarea formControlName="placeDescEdit" type="text">
+                  </ion-textarea>
+                </ion-item>
+                <!-- <ion-item *ngIf="placeDesc.touched && placeDesc.invalid" color="danger">
+                  <ion-text *ngIf="placeDesc.errors.required">Description is Required.</ion-text>
+                  <ion-text *ngIf="placeDesc.errors.minlength">Description should be Minimum
+                    {{ placeDesc.errors.minlength.requiredLength }} Characters.</ion-text>
+                </ion-item> -->
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">The Address</ion-label>
+                  <ion-textarea formControlName="placeAddressEdit" type="text">
+                  </ion-textarea>
+                </ion-item>
+                <!-- <ion-item *ngIf="placeAdd.touched && placeAdd.invalid" color="danger">
+                  <ion-text *ngIf="placeAdd.errors.required">Address is Required.</ion-text>
+                  <ion-text *ngIf="placeAdd.errors.minlength">Address should be Minimum
+                    {{ placeAdd.errors.minlength.requiredLength }} Characters</ion-text>
+                </ion-item> -->
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">Price per Night (in INR)</ion-label>
+                  <ion-input formControlName="placePricePerNightEdit" type="number">
+                  </ion-input>
+                </ion-item>
+                <!-- <ion-item *ngIf="placePrice.touched && placePrice.invalid" color="danger">
+                  <ion-text *ngIf="placePrice.errors.required">Price is Required.</ion-text>
+                  <ion-text *ngIf="placePrice.errors.min">Price value should be greater than 0.</ion-text>
+                </ion-item> -->
+              </ion-col>
+            </ion-row>
+
+            <div formGroupName="placeAvailabilityEdit">
+              <ion-row class="">
+                <ion-col size-sm="3">
+                  <ion-item>
+                    <ion-label position="floating">Avilable From</ion-label>
+                    <ion-datetime formControlName="availableFromEdit" min="2020-01-01" max="2050-12-31"></ion-datetime>
+                  </ion-item>
+                  <!-- <ion-item *ngIf="placeAvailableFrom.touched && placeAvailableFrom.invalid" color="danger">
+                    <ion-text *ngIf="placeAvailableFrom.errors.required">Required.</ion-text>
+                  </ion-item> -->
+                </ion-col>
+
+                <ion-col size-sm="3">
+                  <ion-item>
+                    <ion-label position="floating">The Address</ion-label>
+                    <ion-datetime formControlName="availabletillEdit" min="2020-01-01" max="2050-12-31"></ion-datetime>
+                  </ion-item>
+                  <!-- <ion-item *ngIf="placeAvailabletill.touched && placeAvailabletill.invalid" color="danger">
+                    <ion-text *ngIf="placeAvailabletill.errors.required">Required.</ion-text>
+                  </ion-item>
+                   -->
+                </ion-col>
+
+              </ion-row>
+            </div>
+
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

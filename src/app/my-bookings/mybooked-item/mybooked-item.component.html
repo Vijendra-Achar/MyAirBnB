@@ -1,0 +1,17 @@
+<ion-item>
+  <ion-label>
+    <h2>{{ bookingItem.placeName }}</h2>
+    <p>Booking ID - {{ bookingItem.bookingId }}</p>
+
+    <p>
+      From
+      <ion-icon name="calendar-outline"></ion-icon>
+      <ion-text class="marginLeft">{{ getDate() | date }} </ion-text>
+      to
+      <ion-icon name="calendar-outline"></ion-icon>
+      <ion-text class="marginLeft">{{ getDate() | date }}</ion-text>
+    </p>
+  </ion-label>
+  <ion-text>
+  </ion-text>
+</ion-item>

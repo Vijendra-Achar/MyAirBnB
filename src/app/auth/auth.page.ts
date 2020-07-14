@@ -24,7 +24,7 @@ export class AuthPage implements OnInit {
   ngOnInit() {
     this.logInForm = new FormGroup({
       'usernameOrEmail': new FormControl('', {
-        validators: [Validators.required, loginAndSignUp.cannotContainSpace],
+        validators: [Validators.required, Validators.email, loginAndSignUp.cannotContainSpace],
       }),
       'password': new FormControl('', {
         validators: Validators.required,

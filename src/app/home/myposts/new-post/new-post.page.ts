@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { HomeService } from './../../../services/home.service';
 import { Component, OnInit } from '@angular/core';
 import { Form, FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -10,7 +12,7 @@ export class NewPostPage implements OnInit {
 
   newPost: FormGroup;
 
-  constructor() { }
+  constructor(private homeService: HomeService, private router: Router) { }
 
   ngOnInit() {
     this.newPost = new FormGroup({
@@ -60,6 +62,20 @@ export class NewPostPage implements OnInit {
 
   onCreatePost() {
     console.log(this.newPost.value);
+    if (!this.newPost.valid) {
+      return;
+    }
+
+    this.homeService.addNewPlacePost(
+      this.placeName.value,
+      this.placeDesc.value,
+      this.placeAdd.value,
+      this.placePrice.value,
+      new Date(this.placeAvailableFrom.value),
+      new Date(this.placeAvailabletill.value)
+    );
+    this.newPost.reset();
+    this.router.navigate(['/', 'home', 'home-tabs', 'myposts']);
   }
 
 }

@@ -7,48 +7,58 @@
     <h4>Welcome to MyAirBnB</h4>
   </div>
 
-  <form [formGroup]="logInForm">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="4" offset-md="4">
+        <form [formGroup]="logInForm">
 
-    <div class="ion-padding">
-      <ion-list class="ion-no-padding">
+          <div class="ion-padding">
+            <ion-list class="ion-no-padding">
 
-        <ion-item>
-          <ion-label position="floating">E-mail address (or) Username</ion-label>
-          <ion-input formControlName="usernameOrEmail" type="email"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="userOrEmail.touched && userOrEmail.invalid" color="danger">
-          <ion-text *ngIf="userOrEmail.errors.required">Please enter your E-mail or UserName</ion-text>
-          <ion-text *ngIf="userOrEmail.errors.cannotContainSpace">E-mail Address must not contain Space.</ion-text>
-        </ion-item>
+              <ion-item>
+                <ion-label position="floating">E-mail address</ion-label>
+                <ion-input formControlName="usernameOrEmail" type="email"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="userOrEmail.touched && userOrEmail.invalid" color="danger">
+                <ion-text *ngIf="userOrEmail.errors.required">Please enter your E-mail.</ion-text>
+                <ion-text *ngIf="userOrEmail.errors.cannotContainSpace">E-mail Address must not contain Space.
+                </ion-text>
+                <ion-text *ngIf="userOrEmail.errors.email">Invalid E-mail Format.</ion-text>
+              </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input formControlName="password" type="password"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="password.touched && password.invalid" color="danger">
-          <ion-text *ngIf="password.errors.required">Please enter your password.</ion-text>
-        </ion-item>
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input formControlName="password" type="password"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="password.touched && password.invalid" color="danger">
+                <ion-text *ngIf="password.errors.required">Please enter your password.</ion-text>
+              </ion-item>
 
-      </ion-list>
+            </ion-list>
 
-    </div>
+          </div>
 
-    <div class="margin">
-      <ion-button [disabled]="!logInForm.valid" type="submit" size="large" expand="block" color="primary"
-        (click)="onLogIn()">
-        <ion-icon name="log-in-outline" slot="start"></ion-icon>Log in
-      </ion-button>
+          <div class="margin">
+            <ion-button [disabled]="!logInForm.valid" type="submit" size="large" expand="block" color="primary"
+              (click)="onLogIn()">
+              <ion-icon name="log-in-outline" slot="start"></ion-icon>Log in
+            </ion-button>
 
-      <ion-button type="button" expand="block" color="light" (click)="goToSignUpPage()">Don't Have an Account? Sign Up
-      </ion-button>
-      <hr class="solid">
+            <ion-button type="button" expand="block" color="light" (click)="goToSignUpPage()">Don't Have an Account?
+              Sign Up
+            </ion-button>
+            <hr class="solid">
 
-      <h6>Sign in with your preferred account.</h6>
+            <h6>Sign in with your preferred account.</h6>
 
-      <ion-button type="button" size="large" expand="block" color="danger">
-        <ion-icon slot="start" name="logo-google"></ion-icon>Sign In with Google
-      </ion-button>
+            <ion-button type="button" size="large" expand="block" color="danger">
+              <ion-icon slot="start" name="logo-google"></ion-icon>Sign In with Google
+            </ion-button>
 
-    </div>
-  </form>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

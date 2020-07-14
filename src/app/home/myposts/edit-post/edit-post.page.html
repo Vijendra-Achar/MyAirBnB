@@ -5,9 +5,7 @@
     </ion-buttons>
     <ion-title>Edit - {{ currentPlace.placeName }} </ion-title>
     <ion-buttons slot="primary">
-      <ion-button (click)="onUpdateOffer()">
-        <ion-icon name="checkmark-outline" slot="icon-only"></ion-icon>
-      </ion-button>
+
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -15,7 +13,7 @@
 <ion-content>
   <ion-grid class="ion-no-padding">
     <ion-row>
-      <ion-col>
+      <ion-col size-md="8" offset-md="2">
         <div class="ion-padding">
           <h1>Edit Post</h1>
           <h3>Post ID - {{ currentPlace.id }}</h3>
@@ -83,7 +81,7 @@
 
             <div formGroupName="placeAvailabilityEdit">
               <ion-row class="">
-                <ion-col size-sm="3">
+                <ion-col size-md="4">
                   <ion-item>
                     <ion-label position="floating">Avilable From</ion-label>
                     <ion-datetime formControlName="availableFromEdit" min="2020-01-01" max="2050-12-31"></ion-datetime>
@@ -93,7 +91,7 @@
                   </ion-item> -->
                 </ion-col>
 
-                <ion-col size-sm="3">
+                <ion-col size-md="4" offset-md="4">
                   <ion-item>
                     <ion-label position="floating">The Address</ion-label>
                     <ion-datetime formControlName="availabletillEdit" min="2020-01-01" max="2050-12-31"></ion-datetime>
@@ -106,6 +104,14 @@
 
               </ion-row>
             </div>
+            <br />
+            <ion-row>
+              <ion-col size-xs="6" offset-xs="3" size-md="4" offset-md="4">
+                <ion-button expand="block" (click)="onUpdateOffer()">
+                  <ion-icon name="checkmark-done-outline" slot="start"></ion-icon> Done Editing
+                </ion-button>
+              </ion-col>
+            </ion-row>
 
           </div>
         </form>

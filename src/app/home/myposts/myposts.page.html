@@ -2,9 +2,7 @@
   <ion-toolbar color="primary">
     <ion-title>My Posts</ion-title>
     <ion-buttons slot="end">
-      <ion-button routerLink="/home/home-tabs/myposts/new-post">
-        <ion-icon slot="icon-only" name="add"></ion-icon>
-      </ion-button>
+
     </ion-buttons>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -13,28 +11,46 @@
 </ion-header>
 
 <ion-content>
-  <ion-list-header>Places Advertised By Me</ion-list-header>
 
-  <ion-list class="ion-no-padding">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size-md="8" offset-md="2">
 
-    <ion-item-sliding *ngFor="let myPost of myOfferPosts" #itemSlider>
+        <ion-list-header>Places Advertised By Me</ion-list-header>
 
-      <app-my-post-item [myPost]=myPost></app-my-post-item>
+        <ion-list class="ion-no-padding">
 
-      <ion-item-options side="end">
-        <ion-item-option color="primary" (click)="onEditPlace(myPost.id, itemSlider)">
-          <ion-icon name="pencil-outline" slot="start"></ion-icon>
-          Edit
-        </ion-item-option>
-      </ion-item-options>
+          <ion-item-sliding *ngFor="let myPost of myOfferPosts" #itemSlider>
 
-      <ion-item-options side="start">
-        <ion-item-option color="danger" (click)="onDeletePlace(myPost.id, itemSlider)">
-          <ion-icon name="trash-outline" slot="start"></ion-icon>
-          Delete
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+            <app-my-post-item [myPost]=myPost></app-my-post-item>
+
+            <ion-item-options side="end">
+              <ion-item-option color="primary" (click)="onEditPlace(myPost.id, itemSlider)">
+                <ion-icon name="pencil-outline" slot="start"></ion-icon>
+                Edit
+              </ion-item-option>
+            </ion-item-options>
+
+            <ion-item-options side="start">
+              <ion-item-option color="danger" (click)="onDeletePlace(myPost.id, itemSlider)">
+                <ion-icon name="trash-outline" slot="start"></ion-icon>
+                Delete
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+    <br />
+
+    <ion-row>
+      <ion-col size-xs="6" offset-xs="3" size-md="2" offset-md="5">
+        <ion-button size="block" routerLink="/home/home-tabs/myposts/new-post">
+          <ion-icon slot="start" name="add"></ion-icon> Add New Post
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

@@ -1,5 +1,6 @@
 export class Place {
-    constructor(public id: string,
+    constructor(
+        public id: string,
         public placeName: string,
         public description: string,
         public address: string,
@@ -8,6 +9,7 @@ export class Place {
         public rating: number,
         public features: string[],
         public availableFrom: Date,
-        public availableTill: Date
+        public availableTill: Date,
+        public userId: string
     ) { }
 }

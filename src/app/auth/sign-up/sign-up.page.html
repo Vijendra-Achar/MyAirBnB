@@ -12,7 +12,7 @@
   <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
     <ion-grid>
       <ion-row>
-        <ion-col>
+        <ion-col size-md="4" offset-md="4">
 
           <h3 class="ion-text-center ion-padding">Sign Up for a new Account.</h3>
           <h5 class="ion-text-center ion-padding">Enter The Details to Sign Up.</h5>
@@ -71,9 +71,10 @@
       </ion-row>
       <br />
       <ion-row>
-        <ion-col size="4" offset="4">
+        <ion-col size-md="2" offset-md="5">
           <div class="center">
-            <ion-button [disabled]="!this.signUpForm.valid" type="submit" expand="block" color="primary">Submit
+            <ion-button [disabled]="!this.signUpForm.valid" type="submit" expand="block" color="primary">
+              <ion-icon name="checkmark-outline" slot="start"></ion-icon>Submit
             </ion-button>
           </div>
 

@@ -12,28 +12,16 @@
 
     <ion-content>
 
-      <!-- <div *ngIf="isUserLoggedIn === false; then showLoginButton else showProfileButton"></div> -->
+      <ion-grid class="ion-no-padding">
 
-      <!-- <ng-template #showLoginButton>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-list>
-                <ion-menu-toggle>
-                  <ion-item button (click)="onLogIn()">
-                    <ion-icon name="log-in-outline" slot="start"></ion-icon>
-                    <ion-label>Sign In</ion-label>
-                  </ion-item>
-                </ion-menu-toggle>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-template> -->
+        <ion-row>
+          <ion-col>
+            <ion-list-header>
+              Your Profile
+            </ion-list-header>
+          </ion-col>
+        </ion-row>
 
-      <!-- <ng-template #showProfileButton></ng-template> -->
-
-      <ion-grid class="ion-no-padding ion-padding-top">
         <ion-row>
           <ion-col>
             <ion-list>
@@ -41,10 +29,10 @@
                 <ion-item button routerLink="/user-profile">
 
                   <ion-avatar slot="start">
-                    <ion-img src="assets/Profile_picture.jpg"></ion-img>
+                    <ion-img src="assets/img_avatar.png"></ion-img>
                   </ion-avatar>
                   <ion-label>
-                    <h2>The UserName</h2>
+                    <h2>UserName</h2>
                     <p>Username@gmail.com</p>
                   </ion-label>
 
@@ -56,6 +44,14 @@
       </ion-grid>
 
       <ion-grid class="ion-no-padding ion-padding-top">
+
+        <ion-row>
+          <ion-col>
+            <ion-list-header>
+              Application Navigation
+            </ion-list-header>
+          </ion-col>
+        </ion-row>
 
         <ion-row>
           <ion-col>
@@ -95,7 +91,17 @@
 
       </ion-grid>
 
+
       <ion-grid class="ion-no-padding ion-padding-top">
+
+        <ion-row>
+          <ion-col>
+            <ion-list-header>
+              Contact & Information
+            </ion-list-header>
+          </ion-col>
+        </ion-row>
+
         <ion-row>
           <ion-col>
             <ion-list>
@@ -118,6 +124,40 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+
+      <ion-grid class="ion-no-padding ion-padding-top">
+
+        <ion-row>
+          <ion-col>
+            <ion-list-header>
+              Powered By
+            </ion-list-header>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col>
+            <ion-item href="https://firebase.google.com/" target="_blank">
+              <ion-icon name="logo-firebase" slot="start"></ion-icon>
+              <ion-label>Google's Firebase</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item href="https://newsapi.org/" target="_blank">
+              <ion-icon name="newspaper" slot="start"></ion-icon>
+              <ion-label>NewsApi.org</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+
+
+      </ion-grid>
+
 
     </ion-content>
 

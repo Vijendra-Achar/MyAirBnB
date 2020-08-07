@@ -20,7 +20,6 @@ export class CreateBookingComponent implements OnInit {
   totalPrice: number = 0;
 
   ngOnInit() {
-    console.log('From the Component ' + this.bookingMode);
     this.todayDate = new Date();
 
     this.bookingDetails = new FormGroup({
@@ -104,21 +103,24 @@ export class CreateBookingComponent implements OnInit {
     else { return 0 }
   }
 
-  conirmBooking() {
+  confirmBooking() {
     this.modalCtrl.dismiss({
-      'placeName': this.currentPlace.placeName,
-      'price': this.currentPlace.price,
-      'fullName': this.personName.value,
-      'emailAddress': this.personEmail.value,
-      'phoneNumber': this.personPhNumber.value,
-      'numberOfGuests': this.numberOfGuests.value,
-      'durationOfStay': {
-        'stayFrom': this.stayFrom.value,
-        'stayTill': this.stayTill.value
-      },
-      'totalRent': this.calcTotalPrice(),
-      'choosenSuite': this.bookingMode,
-      'placeAdress': this.currentPlace.address
+      bookingData: {
+        'placeName': this.currentPlace.placeName,
+        'price': this.currentPlace.price,
+        'fullName': this.personName.value,
+        'emailAddress': this.personEmail.value,
+        'phoneNumber': this.personPhNumber.value,
+        'numberOfGuests': this.numberOfGuests.value,
+        'durationOfStay': {
+          'stayFrom': new Date(this.stayFrom.value),
+          'stayTill': new Date(this.stayTill.value)
+        },
+        'totalDaysOfStay': this.totalDaysOfStay(),
+        'totalRent': this.calcTotalPrice(),
+        'choosenSuite': this.bookingMode,
+        'placeAdress': this.currentPlace.address
+      }
     }, 'booking confirmed');
 
   }

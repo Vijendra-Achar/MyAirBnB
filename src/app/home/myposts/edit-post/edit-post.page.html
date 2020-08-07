@@ -13,7 +13,7 @@
 <ion-content>
   <ion-grid class="ion-no-padding">
     <ion-row>
-      <ion-col size-md="8" offset-md="2">
+      <ion-col size-md="6" offset-md="3">
         <div class="ion-padding">
           <h1>Edit Post</h1>
           <h3>Post ID - {{ currentPlace.id }}</h3>
@@ -81,7 +81,7 @@
 
             <div formGroupName="placeAvailabilityEdit">
               <ion-row class="">
-                <ion-col size-md="4">
+                <ion-col size-md="6">
                   <ion-item>
                     <ion-label position="floating">Avilable From</ion-label>
                     <ion-datetime formControlName="availableFromEdit" min="2020-01-01" max="2050-12-31"></ion-datetime>
@@ -91,9 +91,9 @@
                   </ion-item> -->
                 </ion-col>
 
-                <ion-col size-md="4" offset-md="4">
+                <ion-col size-md="6" offset-md="">
                   <ion-item>
-                    <ion-label position="floating">The Address</ion-label>
+                    <ion-label position="floating">Available Till</ion-label>
                     <ion-datetime formControlName="availabletillEdit" min="2020-01-01" max="2050-12-31"></ion-datetime>
                   </ion-item>
                   <!-- <ion-item *ngIf="placeAvailabletill.touched && placeAvailabletill.invalid" color="danger">

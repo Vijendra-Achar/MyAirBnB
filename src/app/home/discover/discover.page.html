@@ -11,21 +11,33 @@
 
 <ion-content>
 
-  <ion-segment value="all">
+  <div class="ion-text-center">
+    <ion-list-header>
+      Available Places
+    </ion-list-header>
+  </div>
+
+  <!-- <ion-searchbar></ion-searchbar> -->
+
+  <!-- <ion-segment value="all">
+
     <ion-segment-button value="all">
       All
     </ion-segment-button>
+
     <ion-segment-button value="beach">
-      Beach Houses
+      Hotels
     </ion-segment-button>
+
     <ion-segment-button value="hill">
-      Hill Stations
+      Home Stays
     </ion-segment-button>
-  </ion-segment>
+
+  </ion-segment> -->
 
   <ion-grid>
     <ion-row>
-      <ion-col size="12" size-sm="4" class="ion-no-padding" *ngFor="let post of thePlaces; let i= index">
+      <ion-col size-md="4" size-sm="4" class="ion-no-padding" *ngFor="let post of thePlaces; let i= index">
         <ion-card>
           <ion-card-header>
             <ion-card-title>

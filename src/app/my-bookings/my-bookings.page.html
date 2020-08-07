@@ -19,10 +19,11 @@
         <ion-list class="ion-no-padding">
           <ion-item-sliding *ngFor="let bookingItem of fetchedBookings" #bookingSlider>
 
-            <app-mybooked-item [bookingItem]=bookingItem></app-mybooked-item>
+            <app-mybooked-item routerLink="'/view-my-booking/' + bookingItem.bookingId" [bookingItem]=bookingItem>
+            </app-mybooked-item>
 
             <ion-item-options>
-              <ion-item-option color="danger" (click)="onCancelBooking(bookingItem.bookingId, bookingSlider)">
+              <ion-item-option color=" danger" (click)="onCancelBooking(bookingItem.bookingId, bookingSlider)">
                 <ion-icon name="close-circle-outline" slot="start"></ion-icon>
                 Cancel
               </ion-item-option>

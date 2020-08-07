@@ -9,10 +9,39 @@
 
 <ion-content>
 
-  <ion-list-header>Theme Settings</ion-list-header>
-  <ion-item>
-    <ion-label>Dark Theme</ion-label>
-    <ion-toggle (ionChange)="onToggleTheme($event)"></ion-toggle>
-  </ion-item>
+
+  <ion-grid class="ion-no-padding">
+
+    <ion-row>
+      <ion-col size-md="8" offset-md="2">
+        <ion-list-header>My Profile</ion-list-header>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-center">
+          <img src="/assets/img_avatar.png">
+          <ion-text>
+            <h2>User Name</h2>
+            <h4>User Email-Id</h4>
+            <h4>User Id</h4>
+          </ion-text>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+
+    <ion-row>
+      <ion-col size-md="8" offset-md="2">
+        <ion-list-header>Settings</ion-list-header>
+        <ion-item>
+          <ion-label>Light Theme</ion-label>
+          <ion-toggle (ionChange)="onToggleTheme($event)"></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

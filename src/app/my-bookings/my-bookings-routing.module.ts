@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MyBookingsPage
+  },
+  {
+    path: 'view-my-booking/:bookingId',
+    loadChildren: () => import('./view-my-booking/view-my-booking.module').then(m => m.ViewMyBookingPageModule)
   }
 ];
 
@@ -14,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MyBookingsPageRoutingModule {}
+export class MyBookingsPageRoutingModule { }

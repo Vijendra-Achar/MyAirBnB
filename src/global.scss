@@ -26,12 +26,13 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 /* My Font Import File*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,900;1,100&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,900;1,100&display=swap');
 //@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
 //@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Roboto:wght@100;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,700;0,900;1,400;1,700&display=swap');
 
 
 *{
-    font-family: 'Poppins';
+    font-family: 'Montserrat';
 }
 

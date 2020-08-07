@@ -3,7 +3,14 @@
     <ion-img [src]="myPost.imageUrl"></ion-img>
   </ion-thumbnail>
   <ion-label>
-    <h2>{{ myPost.placeName }}</h2>
-    <p>{{myPost.id}}</p>
+    <ion-text>
+      <h2>{{ myPost.placeName }}</h2>
+    </ion-text>
+    <ion-text>
+      <h2>
+        <ion-icon slot="start" name="calendar-outline"></ion-icon>{{ myPost.availableFrom | date }} - To
+        {{ myPost.availableTill | date }}
+      </h2>
+    </ion-text>
   </ion-label>
 </ion-item>

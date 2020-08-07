@@ -1,3 +1,4 @@
+import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { HomeService } from './../../../services/home.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,11 @@ export class NewPostPage implements OnInit {
 
   newPost: FormGroup;
 
-  constructor(private homeService: HomeService, private router: Router) { }
+  constructor(
+    private homeService: HomeService,
+    private router: Router,
+    private loadingCtrl: LoadingController
+  ) { }
 
   ngOnInit() {
     this.newPost = new FormGroup({
@@ -66,16 +71,22 @@ export class NewPostPage implements OnInit {
       return;
     }
 
-    this.homeService.addNewPlacePost(
-      this.placeName.value,
-      this.placeDesc.value,
-      this.placeAdd.value,
-      this.placePrice.value,
-      new Date(this.placeAvailableFrom.value),
-      new Date(this.placeAvailabletill.value)
-    );
-    this.newPost.reset();
-    this.router.navigate(['/', 'home', 'home-tabs', 'myposts']);
+    this.loadingCtrl.create({
+      message: 'Creating New Post...'
+    }).then(loadingEl => {
+      loadingEl.present();
+      this.homeService.addNewPlacePost(
+        this.placeName.value,
+        this.placeDesc.value,
+        this.placeAdd.value,
+        this.placePrice.value,
+        new Date(this.placeAvailableFrom.value),
+        new Date(this.placeAvailabletill.value)
+      ).subscribe(() => {
+        loadingEl.dismiss()
+        this.newPost.reset();
+        this.router.navigate(['/', 'home', 'home-tabs', 'myposts']);
+      });
+    })
   }
-
 }

@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { BookingService } from './../services/booking.service';
 import { Bookings } from './../services/booking.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonItemSliding } from '@ionic/angular';
 
 @Component({
@@ -8,14 +10,20 @@ import { IonItemSliding } from '@ionic/angular';
   templateUrl: './my-bookings.page.html',
   styleUrls: ['./my-bookings.page.scss'],
 })
-export class MyBookingsPage implements OnInit {
+export class MyBookingsPage implements OnInit, OnDestroy {
 
   fetchedBookings: Bookings[];
+  bookingDataSub: Subscription;
 
-  constructor(private bookingService: BookingService) { }
+  constructor(
+    private bookingService: BookingService,
+    private router: Router) { }
 
   ngOnInit() {
-    this.fetchedBookings = this.bookingService.bookingsData;
+    this.bookingDataSub = this.bookingService.bookingsData.subscribe(data => {
+      console.log(data);
+      this.fetchedBookings = data;
+    });
   }
 
   onCancelBooking(bookingId: string, itemSlider: IonItemSliding) {
@@ -25,5 +33,13 @@ export class MyBookingsPage implements OnInit {
 
   getDate() {
     return new Date();
+  }
+
+
+
+  ngOnDestroy() {
+    if (this.bookingDataSub) {
+      this.bookingDataSub.unsubscribe();
+    }
   }
 }

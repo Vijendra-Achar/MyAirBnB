@@ -1,9 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>viewMyBooking</ion-title>
+    <ion-title>{{ currentBookedPlace.placeName }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <h3>{{ currentBookedPlace.totalPrice }}</h3>
+  <h3>{{ currentBookedPlace.placeSuite }}</h3>
+  <h3>{{ currentBookedPlace.userName }}</h3>
+  <h3>{{ currentBookedPlace.bookingId }}</h3>
+
+  <hr>
+
+  <h4>{{ currentBookedPlace.bookingDateFrom }}</h4>
+  <h4>{{ currentBookedPlace.bookigDateTill }}</h4>
 </ion-content>

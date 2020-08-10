@@ -1,4 +1,4 @@
-import { take, tap, delay } from 'rxjs/operators';
+import { take, tap, delay, map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { BehaviorSubject } from 'rxjs';
 import { Bookings } from './booking.model';
@@ -62,7 +62,24 @@ export class BookingService {
     );
   }
 
-  cancelBookings() {
+  cancelBookings(bookingId: string) {
+    return this.bookingsMade.pipe(
+      take(1),
+      delay(1500),
+      tap(place => {
+        this.bookingsMade.next(place.filter(allPlaces => {
+          allPlaces.bookingId !== bookingId;
+        }))
+      })
+    )
+  }
 
+  getOneBooking(bookingId: string) {
+    return this.bookingsData.pipe(
+      take(1),
+      map(place => {
+        return { ...place.find(p => p.bookingId === bookingId) }
+      })
+    )
   }
 }

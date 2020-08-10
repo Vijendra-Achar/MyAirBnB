@@ -10,20 +10,24 @@
 <ion-content>
   <ion-grid class="ion-no-padding">
     <ion-row>
-      <ion-col size-md="6" offset-md="3">
+      <ion-list-header>
+        <p>My Booked Places</p>
+      </ion-list-header>
 
-        <ion-list-header>
-          <p>My Booked Places</p>
-        </ion-list-header>
+      <ion-col class="ion-text-center" *ngIf="!fetchedBookings || fetchedBookings.length <= 0">
+        <p>No Bookings are Done Yet!</p>
+      </ion-col>
+
+      <ion-col *ngIf="fetchedBookings && fetchedBookings.length > 0" size-md="6" offset-md="3">
 
         <ion-list class="ion-no-padding">
           <ion-item-sliding *ngFor="let bookingItem of fetchedBookings" #bookingSlider>
 
-            <app-mybooked-item routerLink="'/view-my-booking/' + bookingItem.bookingId" [bookingItem]=bookingItem>
+            <app-mybooked-item (click)="viewBookedPlace(bookingItem.bookingId)" [bookingItem]=bookingItem>
             </app-mybooked-item>
 
             <ion-item-options>
-              <ion-item-option color=" danger" (click)="onCancelBooking(bookingItem.bookingId, bookingSlider)">
+              <ion-item-option color="danger" (click)="onCancelBooking(bookingItem.bookingId, bookingSlider)">
                 <ion-icon name="close-circle-outline" slot="start"></ion-icon>
                 Cancel
               </ion-item-option>

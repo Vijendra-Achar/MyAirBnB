@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { BookingService } from './../services/booking.service';
 import { Bookings } from './../services/booking.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IonItemSliding } from '@ionic/angular';
+import { IonItemSliding, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-bookings',
@@ -17,7 +17,9 @@ export class MyBookingsPage implements OnInit, OnDestroy {
 
   constructor(
     private bookingService: BookingService,
-    private router: Router) { }
+    private router: Router,
+    private loadingCtrl: LoadingController
+  ) { }
 
   ngOnInit() {
     this.bookingDataSub = this.bookingService.bookingsData.subscribe(data => {
@@ -27,15 +29,25 @@ export class MyBookingsPage implements OnInit, OnDestroy {
   }
 
   onCancelBooking(bookingId: string, itemSlider: IonItemSliding) {
-    console.log('Canceled - ' + bookingId);
-    itemSlider.close();
+    this.loadingCtrl.create({ message: "Cancelling..." }).then(loadingEl => {
+      loadingEl.present();
+      console.log('Canceled - ' + bookingId);
+      this.bookingService.cancelBookings(bookingId).subscribe(() => {
+        loadingEl.dismiss();
+        itemSlider.close();
+      });
+    })
+
+
   }
 
   getDate() {
     return new Date();
   }
 
-
+  viewBookedPlace(bookingId) {
+    this.router.navigate(['/', 'my-bookings', 'view-my-booking', bookingId]);
+  }
 
   ngOnDestroy() {
     if (this.bookingDataSub) {
